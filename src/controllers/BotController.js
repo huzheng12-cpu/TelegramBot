@@ -187,11 +187,14 @@ class BotController {
     try {
       let message = `➕ <b>添加新项目</b>\n\n`;
       message += `请使用以下格式添加项目：\n`;
-      message += `/add_project 项目ID|项目名称|开始日期|详情备注|开台费|是否已付|服务器时间\n`;
-      message += `例如：/add_project 20|新项目|2025-01-01|新项目备注|5000|false|2025-06-11\n\n`;
-      message += `说明：\n`;
+      message += `<code>/add_project 项目ID|项目名称|开始日期|详情备注|开台费|是否已付|服务器时间</code>\n\n`;
+      message += `📝 <b>示例（可直接复制）：</b>\n`;
+      message += `<code>/add_project 20|新项目|2025-01-01|新项目备注|5000|false|2025-06-11</code>\n\n`;
+      message += `💡 <b>使用说明：</b>\n`;
+      message += `• 复制上面的示例命令\n`;
+      message += `• 修改项目ID、名称、日期等信息\n`;
       message += `• 项目ID：必须唯一\n`;
-      message += `• 是否已付：true表示已付，false表示未付\n`;
+      message += `• 是否已付：true=已付，false=未付\n`;
       message += `• 服务器时间：服务器到期时间`;
 
       const keyboard = [
@@ -324,8 +327,13 @@ class BotController {
       let message = `➕ <b>添加维护记录</b>\n\n`;
       message += `项目: ${project.projectName} (ID: ${projectId})\n\n`;
       message += `请使用以下格式添加记录：\n`;
-      message += `/add_record ${projectId} 支付日期|支付金额|是否已付|备注\n`;
-      message += `例如：/add_record ${projectId} 2025-07-21|3000|true|维护费`;
+      message += `<code>/add_record ${projectId} 支付日期|支付金额|是否已付|备注</code>\n\n`;
+      message += `📝 <b>示例（可直接复制）：</b>\n`;
+      message += `<code>/add_record ${projectId} 2025-07-21|3000|true|维护费</code>\n\n`;
+      message += `💡 <b>使用说明：</b>\n`;
+      message += `• 复制上面的示例命令\n`;
+      message += `• 修改日期、金额、是否已付和备注\n`;
+      message += `• 是否已付：true=已付，false=未付`;
 
       const keyboard = [
         [Markup.button.callback('⬅️ 返回详情', `details_${projectId}`)]
