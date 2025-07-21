@@ -50,9 +50,11 @@ class BotController {
 
       const keyboard = [];
       result.projects.forEach(project => {
+        // 格式化时间显示 - 使用开始日期
+        const timeDisplay = project.startDate ? ` (${project.startDate})` : '';
         keyboard.push([
           Markup.button.callback(
-            `📊 ${project.projectName}`,
+            `📊 ${project.projectName}${timeDisplay}`,
             `details_${project.projectId}`
           )
         ]);
