@@ -225,9 +225,15 @@ class BotController {
       message += `📄 详情备注: ${project.maintenanceDetails || '--'}\n`;
       message += `💰 开台费: ${project.openingFee || 0}\n`;
       message += `✅ 开台费已付: ${project.isOpeningFee ? '是' : '否'}\n\n`;
-      message += `请使用以下格式编辑项目：\n`;
-      message += `/edit_project ${projectId} 项目名称|开始日期|详情备注|开台费|是否已付\n`;
-      message += `例如：/edit_project ${projectId} 新项目名称|2025-01-01|新备注|5000|true`;
+      message += `📋 <b>编辑格式：</b>\n`;
+      message += `<code>/edit_project ${projectId} 项目名称|开始日期|详情备注|开台费|是否已付</code>\n\n`;
+      message += `📝 <b>当前数据（可直接复制修改）：</b>\n`;
+      message += `<code>/edit_project ${projectId} ${project.projectName}|${project.startDate || '2025-01-01'}|${project.maintenanceDetails || '无'}|${project.openingFee || '0'}|${project.isOpeningFee ? 'true' : 'false'}</code>\n\n`;
+      message += `💡 <b>使用说明：</b>\n`;
+      message += `• 复制上面的命令\n`;
+      message += `• 修改需要更新的字段\n`;
+      message += `• 发送修改后的命令\n`;
+      message += `• 是否已付：true=已付，false=未付`;
 
       const keyboard = [
         [Markup.button.callback('⬅️ 返回详情', `details_${projectId}`)]
@@ -351,18 +357,29 @@ class BotController {
       }
 
       const record = project.maintenanceRecords[recordIndexNum];
+      if (record.isDeleted) {
+        return await ctx.reply('该记录已被删除，无法编辑');
+      }
 
       let message = `✏️ <b>编辑维护记录</b>\n\n`;
-      message += `项目: ${project.projectName} (ID: ${projectId})\n`;
-      message += `记录索引: ${recordIndexNum + 1}\n\n`;
-      message += `当前记录信息：\n`;
-      message += `📅 支付日期: ${record.paymentDate}\n`;
-      message += `💰 支付金额: ${record.paymentAmount}\n`;
-      message += `✅ 是否已付: ${record.isPayment ? '是' : '否'}\n`;
-      message += `📝 备注: ${record.Details || '无'}\n\n`;
-      message += `请使用以下格式编辑记录：\n`;
-      message += `/edit_record ${projectId} ${recordIndex} 支付日期|支付金额|是否已付|备注\n`;
-      message += `例如：/edit_record ${projectId} ${recordIndex} 2025-07-21|3500|true|更新后的维护费`;
+      message += `🏢 <b>项目信息</b>\n`;
+      message += `   📝 项目名称: ${project.projectName}\n`;
+      message += `   🆔 项目ID: ${projectId}\n`;
+      message += `   📋 记录索引: ${recordIndexNum + 1}\n\n`;
+      message += `📅 <b>当前记录信息</b>\n`;
+      message += `   📅 支付日期: ${record.paymentDate}\n`;
+      message += `   💰 支付金额: ${record.paymentAmount} USDT\n`;
+      message += `   ✅ 是否已付: ${record.isPayment ? '是' : '否'}\n`;
+      message += `   📝 备注: ${record.Details || '无'}\n\n`;
+      message += `📋 <b>编辑格式：</b>\n`;
+      message += `<code>/edit_record ${projectId} ${recordIndex} 支付日期|支付金额|是否已付|备注</code>\n\n`;
+      message += `📝 <b>当前数据（可直接复制修改）：</b>\n`;
+      message += `<code>/edit_record ${projectId} ${recordIndex} ${record.paymentDate}|${record.paymentAmount}|${record.isPayment ? 'true' : 'false'}|${record.Details || '无'}</code>\n\n`;
+      message += `💡 <b>使用说明：</b>\n`;
+      message += `• 复制上面的命令\n`;
+      message += `• 修改需要更新的字段\n`;
+      message += `• 发送修改后的命令\n`;
+      message += `• 是否已付：true=已付，false=未付`;
 
       const keyboard = [
         [Markup.button.callback('⬅️ 返回详情', `details_${projectId}`)]
@@ -600,15 +617,17 @@ class BotController {
       const statistics = await ProjectService.getMonthlyStatistics(year, month);
 
       // 分页设置
-      const itemsPerPage = 5;
+      const itemsPerPage = 3; // 减少每页项目数量，让显示更清晰
       const totalItems = statistics.projectDetails.length;
       const totalPages = Math.ceil(totalItems / itemsPerPage);
       const startIndex = page * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
       const currentPageItems = statistics.projectDetails.slice(startIndex, endIndex);
 
-      let message = `📋 <b>项目明细</b>\n`;
-      message += `📅 ${year}年${month}月 (第${page + 1}/${totalPages}页)\n\n`;
+      let message = `📊 <b>项目明细报表</b>\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `📅 <b>${year}年${month}月</b> | 📄 <b>第${page + 1}/${totalPages}页</b>\n`;
+      message += `📈 <b>总计: ${totalItems}个项目</b>\n\n`;
 
       if (currentPageItems.length > 0) {
         // 获取当前页项目的详细信息
@@ -625,46 +644,63 @@ class BotController {
 
         projectDetails.forEach((project, index) => {
           const globalIndex = startIndex + index + 1;
-          message += `${globalIndex}. <b>${project.projectName}</b> (ID: ${project.projectId})\n`;
 
-          if (project.received > 0) {
-            message += `   ✅ 已收: ${project.received.toLocaleString()} USDT\n`;
-          }
+          // 项目标题
+          message += `🔸 <b>项目 ${globalIndex}</b>\n`;
+          message += `   🏢 <b>${project.projectName}</b>\n`;
+          message += `   🆔 ID: <code>${project.projectId}</code>\n`;
 
-          if (project.unpaid > 0) {
-            message += `   ⚠️ 未收: ${project.unpaid.toLocaleString()} USDT\n`;
-          }
-
-          // 显示项目详细信息
-          if (project.details) {
-            if (project.details.maintenanceDetails) {
-              message += `   📝 备注: ${project.details.maintenanceDetails}\n`;
+          // 费用信息
+          if (project.received > 0 || project.unpaid > 0) {
+            message += `   💰 <b>费用统计:</b>\n`;
+            if (project.received > 0) {
+              message += `      ✅ 已收: <b>${project.received.toLocaleString()} USDT</b>\n`;
             }
-
-            // 显示支付记录详情
-            if (project.details.maintenanceRecords && project.details.maintenanceRecords.length > 0) {
-              const activeRecords = project.details.maintenanceRecords.filter(record => !record.isDeleted);
-              if (activeRecords.length > 0) {
-                message += `   📋 支付记录:\n`;
-                activeRecords.forEach((record, recordIndex) => {
-                  const statusIcon = record.isPayment ? '✅' : '⚠️';
-                  const statusText = record.isPayment ? '已付' : '未付';
-                  message += `      ${recordIndex + 1}. ${record.paymentDate} - ${record.paymentAmount} USDT ${statusIcon} ${statusText}\n`;
-                  if (record.Details) {
-                    message += `         📝 ${record.Details}\n`;
-                  }
-                });
-              }
+            if (project.unpaid > 0) {
+              message += `      ⚠️ 未收: <b>${project.unpaid.toLocaleString()} USDT</b>\n`;
             }
           }
 
-          message += `\n`;
+          // 项目备注
+          if (project.details && project.details.maintenanceDetails) {
+            message += `   📝 <b>备注:</b> ${project.details.maintenanceDetails}\n`;
+          }
+
+          // 支付记录详情
+          if (project.details && project.details.maintenanceRecords && project.details.maintenanceRecords.length > 0) {
+            const activeRecords = project.details.maintenanceRecords.filter(record => !record.isDeleted);
+            if (activeRecords.length > 0) {
+              message += `   📋 <b>支付记录 (${activeRecords.length}条):</b>\n`;
+              activeRecords.forEach((record, recordIndex) => {
+                const statusIcon = record.isPayment ? '✅' : '⏳';
+                const statusText = record.isPayment ? '已付' : '待付';
+                const statusColor = record.isPayment ? 'green' : 'orange';
+
+                message += `      ${recordIndex + 1}. <b>${record.paymentDate}</b>\n`;
+                message += `         💵 <b>${record.paymentAmount} USDT</b> ${statusIcon} ${statusText}\n`;
+                if (record.Details && record.Details.trim()) {
+                  message += `         📄 ${record.Details}\n`;
+                }
+                message += `\n`;
+              });
+            }
+          }
+
+          // 项目分隔线
+          if (index < currentPageItems.length - 1) {
+            message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+          }
         });
       } else {
-        message += `暂无项目数据\n`;
+        message += `📭 <b>暂无项目数据</b>\n`;
+        message += `   当前月份没有找到任何项目记录\n`;
       }
 
-      message += `📅 统计时间: ${now.toLocaleDateString('zh-CN')} ${now.toLocaleTimeString('zh-CN')}`;
+      // 页脚信息
+      message += `\n━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `📊 <b>统计信息</b>\n`;
+      message += `   📅 统计时间: ${now.toLocaleDateString('zh-CN')} ${now.toLocaleTimeString('zh-CN')}\n`;
+      message += `   📄 当前页: ${page + 1}/${totalPages} | 每页: ${itemsPerPage}个项目`;
 
       // 构建分页键盘
       const keyboard = [];
@@ -683,7 +719,11 @@ class BotController {
         }
       }
 
-      keyboard.push([Markup.button.callback('⬅️ 返回', 'back_to_list')]);
+      // 操作按钮
+      const actionRow = [];
+      actionRow.push(Markup.button.callback('🔄 刷新', 'view_project_details'));
+      actionRow.push(Markup.button.callback('⬅️ 返回', 'back_to_list'));
+      keyboard.push(actionRow);
 
       const replyMarkup = Markup.inlineKeyboard(keyboard);
       await ctx.replyWithHTML(message, replyMarkup);
