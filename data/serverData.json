@@ -1,0 +1,319 @@
+[
+  {
+    "projectId": "5",
+    "projectName": "小鱼交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "小鱼交易所",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-10",
+        "isPayment": true,
+        "Details": "",
+        "paymentAmount": "5800"
+      }
+    ]
+  },
+  {
+    "projectId": "9",
+    "projectName": "B交易所",
+    "startDate": "2025-06-11",
+    "serverTime": "2025-06-11",
+    "maintenanceDetails": "B交易所（维护费3000，服务器1000）",
+    "openingFee": "7000",
+    "isOpeningFee": false,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-11",
+        "isPayment": false,
+        "Details": "服务器1000(未付),暂未维护费",
+        "paymentAmount": "1000"
+      }
+    ]
+  },
+  {
+    "projectId": "14",
+    "projectName": "大神ACM股票",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "大神ACM股票（维护费3500）日本",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-14",
+        "isPayment": true,
+        "Details": "",
+        "paymentAmount": "3500"
+      }
+    ]
+  },
+  {
+    "projectId": "8",
+    "projectName": "P交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "P交易所（维护费5000，服务器1000）",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-15",
+        "isPayment": true,
+        "Details": "",
+        "paymentAmount": "6000"
+      }
+    ]
+  },
+  {
+    "projectId": "10",
+    "projectName": "X交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "X交易所（维护费5000，数据库300）",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-15",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "5300"
+      }
+    ]
+  },
+  {
+    "projectId": "11",
+    "projectName": "B交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "B交易所（维护费5000，数据库300）",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-15",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "5300"
+      }
+    ]
+  },
+  {
+    "projectId": "12",
+    "projectName": "L交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "L交易所（维护费5000，服务器300）",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-15",
+        "isPayment": false,
+        "Details": "暂未维护费",
+        "paymentAmount": "300"
+      }
+    ]
+  },
+  {
+    "projectId": "13",
+    "projectName": "TOM交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "TOM交易所（维护费5000）",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-15",
+        "isPayment": true,
+        "Details": "",
+        "paymentAmount": "5000"
+      }
+    ]
+  },
+  {
+    "projectId": "18",
+    "projectName": "德国交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "德国交易所（维护费5800）",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-20",
+        "isPayment": true,
+        "Details": "",
+        "paymentAmount": "5800"
+      }
+    ]
+  },
+  {
+    "projectId": "6",
+    "projectName": "花1交易所",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "花1交易所",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-20",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "5800"
+      }
+    ]
+  },
+  {
+    "projectId": "15",
+    "projectName": "张林股票",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "张林股票（维护费3500）日本",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-24",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "3500"
+      }
+    ]
+  },
+  {
+    "projectId": "1",
+    "projectName": "金宝2",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "详情备注",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-30",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "5800"
+      },
+      {
+        "paymentDate": "2025-08-30",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "5800"
+      }
+    ]
+  },
+  {
+    "projectId": "2",
+    "projectName": "金宝3",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "详情备注",
+    "isOpeningFee": true,
+    "openingFee": "0",
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-30",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "5800"
+      }
+    ]
+  },
+  {
+    "projectId": "3",
+    "projectName": "金宝4",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "详情备注",
+    "isOpeningFee": true,
+    "openingFee": "0",
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-30",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "5800"
+      }
+    ]
+  },
+  {
+    "projectId": "4",
+    "projectName": "金宝5",
+    "startDate": "2025-07-15",
+    "maintenanceDetails": "万钧交易所",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "serverTime": "2025-06-11",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-30",
+        "isPayment": false,
+        "Details": "开台费15800",
+        "paymentAmount": "15800"
+      }
+    ]
+  },
+  {
+    "projectId": "7",
+    "projectName": "花2交易所",
+    "startDate": "2025-07-12",
+    "maintenanceDetails": "定金5000(已付)",
+    "isOpeningFee": false,
+    "openingFee": "23000",
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-12",
+        "isPayment": true,
+        "Details": "开台费23000（定金5000U）",
+        "paymentAmount": "5000"
+      },
+      {
+        "paymentDate": "2025-07-30",
+        "isPayment": false,
+        "Details": "开台费23000（未支付18000U）",
+        "paymentAmount": "18000"
+      }
+    ]
+  },
+  {
+    "projectId": "16",
+    "projectName": "小鱼股票美国",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "小鱼股票美国（维护费3500）美国",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-30",
+        "isPayment": true,
+        "Details": "",
+        "paymentAmount": "3500"
+      }
+    ]
+  },
+  {
+    "projectId": "17",
+    "projectName": "小鱼股票墨西哥",
+    "startDate": "2025-01-10",
+    "maintenanceDetails": "小鱼股票美国（维护费4000）墨西哥+美国",
+    "serverTime": "2025-06-11",
+    "openingFee": "0",
+    "isOpeningFee": true,
+    "maintenanceRecords": [
+      {
+        "paymentDate": "2025-07-30",
+        "isPayment": false,
+        "Details": "",
+        "paymentAmount": "4000"
+      }
+    ]
+  }
+]
